@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Nature Background</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        .nature-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(to bottom, #1a6fc9 0%, #5cb3ff 100%);
+            overflow: hidden;
+        }
+        
+        /* Sky elements */
+        .sun {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, #ffde59 0%, #ff914d 70%);
+            border-radius: 50%;
+            top: 15%;
+            right: 15%;
+            filter: blur(1px);
+            box-shadow: 0 0 60px #ff914d;
+            animation: sun-glow 8s ease-in-out infinite alternate;
+        }
+        
+        .cloud {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            filter: blur(8px);
+            animation: cloud-float linear infinite;
+        }
+        
+        /* Mountain layers */
+        .mountain {
+            position: absolute;
+            bottom: 0;
+            width: 0;
+            height: 0;
+            border-left: 50vw solid transparent;
+            border-right: 50vw solid transparent;
+            border-bottom: 30vh solid #2a5a3c;
+            z-index: 1;
+        }
+        
+        .mountain-back {
+            border-bottom: 25vh solid #1e3b29;
+            bottom: 10vh;
+            z-index: 0;
+        }
+        
+        /* Forest layer */
+        .tree {
+            position: absolute;
+            bottom: 0;
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 60px solid #1e4620;
+            z-index: 2;
+        }
+        
+        /* Water reflection */
+        .water {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 20%;
+            background: linear-gradient(to top, rgba(26, 111, 201, 0.6) 0%, rgba(92, 179, 255, 0.3) 100%);
+            z-index: 3;
+            animation: water-shimmer 5s linear infinite;
+        }
+        
+        /* Animations */
+        @keyframes sun-glow {
+            0%, 100% { box-shadow: 0 0 60px #ff914d; }
+            50% { box-shadow: 0 0 90px #ff914d, 0 0 120px #ff914d55; }
+        }
+        
+        @keyframes cloud-float {
+            0% { transform: translateX(-20vw); }
+            100% { transform: translateX(120vw); }
+        }
+        
+        @keyframes water-shimmer {
+            0%, 100% { background: linear-gradient(to top, rgba(26, 111, 201, 0.6) 0%, rgba(92, 179, 255, 0.3) 100%); }
+            50% { background: linear-gradient(to top, rgba(26, 111, 201, 0.7) 0%, rgba(92, 179, 255, 0.4) 100%); }
+        }
+        
+        /* Content styling */
+        .content {
+            position: relative;
+            z-index: 10;
+            padding: 40px;
+            color: white;
+            text-align: center;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            font-size: 1.2em;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+        
+        .name-section {
+            background-color;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        .greeting {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="nature-background">
+        <!-- Sky elements -->
+        <div class="sun"></div>
+        
+        <!-- Clouds -->
+        <div class="cloud" style="width: 120px; height: 60px; top: 20%; left: 10%; animation-duration: 60s;"></div>
+        <div class="cloud" style="width: 180px; height: 80px; top: 25%; left: 30%; animation-duration: 80s; animation-delay: -20s;"></div>
+        <div class="cloud" style="width: 150px; height: 70px; top: 15%; left: 50%; animation-duration: 70s; animation-delay: -10s;"></div>
+        
+        <!-- Mountains -->
+        <div class="mountain mountain-back"></div>
+        <div class="mountain"></div>
+        
+        <!-- Trees -->
+        <div class="tree" style="left: 10%;"></div>
+        <div class="tree" style="left: 15%; border-bottom: 50px solid #1e4620;"></div>
+        <div class="tree" style="left: 22%; border-bottom: 70px solid #1e4620;"></div>
+        <div class="tree" style="left: 30%; border-bottom: 55px solid #1e4620;"></div>
+        <div class="tree" style="left: 40%; border-bottom: 65px solid #1e4620;"></div>
+        <div class="tree" style="left: 50%; border-bottom: 45px solid #1e4620;"></div>
+        <div class="tree" style="left: 60%; border-bottom: 75px solid #1e4620;"></div>
+        <div class="tree" style="left: 70%; border-bottom: 60px solid #1e4620;"></div>
+        <div class="tree" style="left: 80%; border-bottom: 50px solid #1e4620;"></div>
+        <div class="tree" style="left: 90%; border-bottom: 70px solid #1e4620;"></div>
+        
+        <!-- Water -->
+        <div class="water"></div>
+    </div>
+    
+    <div class="content">
+        <h1>AI Paradise</h1>
+        <p>LETS SEE WHAT IS YOUR FUTURE 
+        <br> JUST TYPE YOUR NAME IN SIDE SECTION
+        </p>
+        
+    </div>
+
+    <script>
+        // Generate random trees
+        function generateTrees() {
+            const natureBg = document.querySelector('.nature-background');
+            
+            // Clear existing trees (except the first few)
+            const existingTrees = document.querySelectorAll('.tree');
+            for (let i = 10; i < existingTrees.length; i++) {
+                existingTrees[i].remove();
+            }
+            
+            // Add more trees for density
+            for (let i = 0; i < 30; i++) {
+                const tree = document.createElement('div');
+                tree.classList.add('tree');
+                
+                const left = Math.random() * 100;
+                const height = 40 + Math.random() * 60;
+                const colorVariance = 20 + Math.random() * 20;
+                
+                tree.style.left = `${left}%`;
+                tree.style.borderBottom = `${height}px solid #1e${Math.floor(60 - colorVariance)}20`;
+                
+                natureBg.appendChild(tree);
+            }
+        }
+        
+        // Generate random clouds
+        function generateClouds() {
+            const natureBg = document.querySelector('.nature-background');
+            
+            // Clear existing clouds (except the first few)
+            const existingClouds = document.querySelectorAll('.cloud');
+            for (let i = 3; i < existingClouds.length; i++) {
+                existingClouds[i].remove();
+            }
+            
+            // Add more clouds
+            for (let i = 0; i < 5; i++) {
+                const cloud = document.createElement('div');
+                cloud.classList.add('cloud');
+                
+                const width = 100 + Math.random() * 100;
+                const height = width * (0.4 + Math.random() * 0.3);
+                const top = 5 + Math.random() * 25;
+                const duration = 50 + Math.random() * 70;
+                const delay = -Math.random() * 50;
+                
+                cloud.style.width = `${width}px`;
+                cloud.style.height = `${height}px`;
+                cloud.style.top = `${top}%`;
+                cloud.style.left = `${Math.random() * 20}%`;
+                cloud.style.animationDuration = `${duration}s`;
+                cloud.style.animationDelay = `${delay}s`;
+                cloud.style.opacity = 0.7 + Math.random() * 0.3;
+                
+                natureBg.appendChild(cloud);
+            }
+        }
+        
+        // Initialize with more elements
+        window.onload = function() {
+            generateTrees();
+            generateClouds();
+        };
+    </script>
+    <div class="name-section">
+        <h2>Please Enter Your Name</h2>
+        <form id="nameForm">
+            <div class="form-group">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" placeholder="John" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" placeholder="Doe">
+            </div>
+            
+            <button type="submit">Submit</button>
+            <a href="http://127.0.0.1:3000/question/yooo.html"> head to next page</a>
+                </form>
+        
+        <div id="greeting" class="greeting"></div>
+       
+
+    </div>
+
+    <script>
+        document.getElementById('nameForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            
+            let fullName = firstName;
+            if (lastName) fullName += ' ' + lastName;
+            
+            const greetingElement = document.getElementById('greeting');
+            greetingElement.textContent = `Hello, ${fullName}!`;
+            greetingElement.style.display = 'block';
+            greetingElement.style.backgroundColor = '#e8f5e9';
+        });
+    </script>
+    
+</body>
+</html>
